@@ -426,6 +426,7 @@ const getClass = async () => {
   const { key } = FilmSiteSetting.value.basic;
   try {
     const res = await zy.classify(key);
+    console.log(res,"getClass")
 
     const { pagecount, limit, total, classData, filters } = res;
 

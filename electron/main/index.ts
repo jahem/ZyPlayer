@@ -8,6 +8,7 @@ import url from 'url';
 
 import initUpdater from './core/auto-update';
 import log from './core/log';
+import { optimizer } from '@electron-toolkit/utils'
 
 const { platform } = process;
 
@@ -184,9 +185,9 @@ app.whenReady().then(() => {
   // 开发中默认按F12打开或关闭Dev Tools
   // 并在生产中忽略 Command 或 Control + R。
   // see https://github.com/alex8088/electron-toolkit/tree/master/packages/utils
-  // app.on('browser-window-created', (_, window) => {
-  //   optimizer.watchWindowShortcuts(window);
-  // });
+  app.on('browser-window-created', (_, window) => {
+    optimizer.watchWindowShortcuts(window);
+  });
 
   createWindow();
 
